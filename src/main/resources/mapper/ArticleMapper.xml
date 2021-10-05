@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mall.mapper.ArticleMapper">
+
+    <resultMap type="com.example.mall.entity.Article" id="ArticleMap">
+        <result property="id" column="id" jdbcType="INTEGER"/>
+        <result property="title" column="title" jdbcType="VARCHAR"/>
+        <result property="content" column="content" jdbcType="VARCHAR"/>
+        <result property="coverImg" column="cover_img" jdbcType="VARCHAR"/>
+        <result property="userId" column="user_id" jdbcType="INTEGER"/>
+        <result property="createTime" column="create_time" jdbcType="TIMESTAMP"/>
+        <result property="categoryId" column="category_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="ArticleMap">
+        select
+          id, title, content, cover_img, user_id, create_time, category_id
+        from t_article
+        where id = #{id}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="ArticleMap">
+        select
+          id, title, content, cover_img, user_id, create_time, category_id
+        from t_article
+        limit #{offset}, #{limit}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="ArticleMap">
+        select
+        id, title, content, cover_img, user_id, create_time, category_id
+        from t_article
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+            <if test="title != null and title != ''">
+                and title = #{title}
+            </if>
+            <if test="content != null and content != ''">
+                and content = #{content}
+            </if>
+            <if test="coverImg != null and coverImg != ''">
+                and cover_img = #{coverImg}
+            </if>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+            <if test="createTime != null">
+                and create_time = #{createTime}
+            </if>
+            <if test="categoryId != null">
+                and category_id = #{categoryId}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="id" useGeneratedKeys="true">
+        insert into t_article(title, content, cover_img, user_id, create_time, category_id)
+        values (#{title}, #{content}, #{coverImg}, #{userId}, #{createTime}, #{categoryId})
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update t_article
+        <set>
+            <if test="title != null and title != ''">
+                title = #{title},
+            </if>
+            <if test="content != null and content != ''">
+                content = #{content},
+            </if>
+            <if test="coverImg != null and coverImg != ''">
+                cover_img = #{coverImg},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime},
+            </if>
+            <if test="categoryId != null">
+                category_id = #{categoryId},
+            </if>
+        </set>
+        where id = #{id}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete from t_article where id = #{id}
+    </delete>
+
+    <select id="findArticleList" parameterType="Map" resultMap="ArticleMap">
+        select
+        id, title, content, cover_img, user_id, create_time, category_id
+        from t_article
+        order by create_time desc
+        <if test="start!=null and limit!=null">
+            limit #{start}, #{limit}
+        </if>
+    </select>
+
+    <select id="getTotalArticle" parameterType="Map" resultType="int">
+        select count(*) from t_article
+
+    </select>
+
+    <select id="getLatest" parameterType="Map" resultMap="ArticleMap">
+        select
+        id, title, content, cover_img, user_id, create_time, category_id
+        from t_article
+        where category_id IN (1, 10)
+        order by create_time desc
+        limit #{limit}
+    </select>
+
+    <select id="queryByCategoryId"  resultMap="ArticleMap">
+        select
+        id, title, content, cover_img, user_id, create_time, category_id
+        from t_article
+        where category_id = #{categoryId}
+        order by create_time desc
+        limit 100
+    </select>
+
+</mapper>
