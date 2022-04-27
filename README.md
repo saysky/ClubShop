@@ -1,3 +1,7 @@
+## 博主开发的其他商城项目全部在这里
+**[https://liuyanzhao.com/shop.html?k=商城](https://liuyanzhao.com/shop.html?k=商城)**  
+- -------------------------------------------------------------------------------
+感谢支持正版项目的朋友
 # SSM 俱乐部商城
 SSM 俱乐部商城
 [详细说明](http://liuyanzhao.com/shop/clubshop.html) <br/>
