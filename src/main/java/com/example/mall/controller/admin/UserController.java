@@ -133,4 +133,3 @@ public class UserController {
         return ResultGenerator.genSuccessResult();
     }
 
-}

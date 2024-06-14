@@ -66,4 +66,3 @@ public interface GoodsMapper {
 
     int deleteById(Long id);
 
-}

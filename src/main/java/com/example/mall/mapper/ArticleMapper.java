@@ -73,4 +73,3 @@ public interface ArticleMapper {
     List<Article> findArticleList(PageQueryUtil pageUtil);
 
     int getTotalArticle(PageQueryUtil pageUtil);
-}

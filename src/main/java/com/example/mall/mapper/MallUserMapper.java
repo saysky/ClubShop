@@ -49,4 +49,3 @@ public interface MallUserMapper {
     int lockUserBatch(@Param("ids") Integer[] ids, @Param("lockStatus") int lockStatus);
 
 
-}

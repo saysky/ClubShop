@@ -12,4 +12,3 @@ $(function () {
 
 function search() {
    $('#submitSearch').click();
-}

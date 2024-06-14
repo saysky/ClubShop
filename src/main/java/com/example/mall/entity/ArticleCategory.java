@@ -32,4 +32,3 @@ public class ArticleCategory implements Serializable {
         this.name = name;
     }
 
-}

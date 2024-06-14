@@ -28,4 +28,3 @@ public interface IndexConfigMapper {
     int deleteBatch(Long[] ids);
 
     List<IndexConfig> findIndexConfigsByTypeAndNum(@Param("configType") int configType, @Param("number") int number);
-}

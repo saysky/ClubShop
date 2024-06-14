@@ -249,4 +249,3 @@
 		return this;
 	};
 
-} )( jQuery, window );

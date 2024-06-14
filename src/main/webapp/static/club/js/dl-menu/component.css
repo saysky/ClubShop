@@ -939,4 +939,3 @@ All this is done for any sub-level being entered.
 
 .no-js .dl-menuwrapper li > a:not(:only-child):after {
 	content: '';
-}

@@ -72,4 +72,3 @@ public interface ArticleService {
     PageResult getArticlePage(PageQueryUtil pageUtil);
 
     List<Article> getLatest(int limit);
-}

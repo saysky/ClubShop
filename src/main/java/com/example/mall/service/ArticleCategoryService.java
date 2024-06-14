@@ -55,4 +55,3 @@ public interface ArticleCategoryService {
      */
     boolean deleteById(Long id);
 
-}

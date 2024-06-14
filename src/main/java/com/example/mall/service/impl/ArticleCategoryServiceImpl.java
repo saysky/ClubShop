@@ -81,4 +81,3 @@ public class ArticleCategoryServiceImpl implements ArticleCategoryService {
     public boolean deleteById(Long id) {
         return this.articleCategoryMapper.deleteById(id) > 0;
     }
-}

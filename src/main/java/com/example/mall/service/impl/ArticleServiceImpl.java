@@ -114,4 +114,3 @@ public class ArticleServiceImpl implements ArticleService {
     public List<Article> getLatest(int limit) {
         return articleMapper.getLatest(limit);
     }
-}

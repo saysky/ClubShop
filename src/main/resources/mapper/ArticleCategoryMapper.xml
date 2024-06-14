@@ -60,4 +60,3 @@
         delete from t_article_category where id = #{id}
     </delete>
 
-</mapper>
